@@ -1,0 +1,15 @@
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/US-Geography-.csprojAssemblyReference.cache
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/US-Geography-.GeneratedMSBuildEditorConfig.editorconfig
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/US-Geography-.AssemblyInfoInputs.cache
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/US-Geography-.AssemblyInfo.cs
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/US-Geography-.csproj.CoreCompileInputs.cache
+/Users/brendannoone/Desktop/CSharp/US-Geography-/bin/Debug/net5.0/US-Geography-.deps.json
+/Users/brendannoone/Desktop/CSharp/US-Geography-/bin/Debug/net5.0/US-Geography-.runtimeconfig.json
+/Users/brendannoone/Desktop/CSharp/US-Geography-/bin/Debug/net5.0/US-Geography-.runtimeconfig.dev.json
+/Users/brendannoone/Desktop/CSharp/US-Geography-/bin/Debug/net5.0/US-Geography-.dll
+/Users/brendannoone/Desktop/CSharp/US-Geography-/bin/Debug/net5.0/ref/US-Geography-.dll
+/Users/brendannoone/Desktop/CSharp/US-Geography-/bin/Debug/net5.0/US-Geography-.pdb
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/US-Geography-.dll
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/ref/US-Geography-.dll
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/US-Geography-.pdb
+/Users/brendannoone/Desktop/CSharp/US-Geography-/obj/Debug/net5.0/US-Geography-.genruntimeconfig.cache
