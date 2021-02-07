@@ -51,7 +51,7 @@ namespace US_Geography_
             public void Info()
             {
                 Console.WriteLine("City: {0}, State: {1}", name, state);
-                //Console.WriteLine("Latitude: {0}, Longitude: {1}", latitude, longitude);
+                Console.WriteLine("Latitude: {0}, Longitude: {1}", coord.latitude, coord.longitude);
                 Console.WriteLine("2019 Population: {0}", population);
                 Console.WriteLine("Area: {0} sq. mi.", area);
                 Console.WriteLine("Population Density: {0} per sq. mi.", density);
@@ -73,7 +73,6 @@ namespace US_Geography_
                 state.name = columns[0];
                 foreach (string column in columns) {
                     if (count > 0 & count < num_decades+1) {
-                        //Console.WriteLine(column);
                         Int32.TryParse(column, out int tmp);
                         state.population[count-1] = tmp;
                     }
@@ -90,10 +89,6 @@ namespace US_Geography_
 
             return states;
         }
-
-        
-
-        
 
         static void Main(string[] args)
         {
