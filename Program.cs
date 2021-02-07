@@ -91,68 +91,9 @@ namespace US_Geography_
             return states;
         }
 
-        public class Coordinates
-        {
-            public String latitude { get; set; }
-            public String longitude { get; set; }
+        
 
-            public Coordinates(string _latitude, string _longitude)
-            {
-                latitude = _latitude;
-                longitude = _longitude;
-            }
-
-            static double convert_coords(string str) 
-            {
-                string[] coord = str.Split('°');
-                double.TryParse(coord[0], out double val);
-                return val;
-            }
-        }
-
-        public class State
-        {
-            public int[] population { get; set; }
-            public double[] growth { get; set; }
-            public string name { get; set; }
-
-            public State(int elements)
-            {
-                population = new int[elements];
-                growth = new double[elements];
-            }
-        }
-
-        public class Metro 
-        {
-            public string metroname { get; set; }
-            public int mpop_new { get; set; }
-            public int mpop_old { get; set; }
-            public double mgrowth { get; set; }
-
-            public Metro(string _metroname, int _mpop_new, int _mpop_old, double _mgrowth)
-            {
-                metroname = _metroname;
-                mpop_new = _mpop_new;
-                mpop_old = _mpop_old;
-                mgrowth = _mgrowth;
-            }
-
-            public Metro()
-            {
-                metroname = "";
-                mpop_new = 0;
-                mpop_old = 0;
-                mgrowth = 0;
-            }
-
-            public static double future_pop(double growth, double initpop, int num_years)
-            {
-                double growthrate = 1 + growth/100;
-                double factor = num_years / 9.0;
-                return Math.Round(initpop * Math.Pow(growthrate, factor), 0);
-            }
-        }
+        
 
         static void Main(string[] args)
         {
