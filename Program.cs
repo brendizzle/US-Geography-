@@ -59,6 +59,38 @@ namespace US_Geography_
             }
         }
 
+        public static List<State> csv_reader(string path)
+        {
+            int count;
+            List<State> states = new List<State>();
+            string[] lines = System.IO.File.ReadAllLines(path);
+            foreach(string line in lines.Skip(8))
+            {
+                count = 0;
+                string[] columns = line.Split(',');
+                int num_decades = 11;
+                State state = new State(num_decades);
+                state.name = columns[0];
+                foreach (string column in columns) {
+                    if (count > 0 & count < num_decades+1) {
+                        //Console.WriteLine(column);
+                        Int32.TryParse(column, out int tmp);
+                        state.population[count-1] = tmp;
+                    }
+
+                    if (count > num_decades) {
+                        double.TryParse(column, out double tmp2);
+                        state.growth[count-1-num_decades] = tmp2;
+                    }
+
+                    count += 1;
+                }
+                states.Add(state);
+            }  
+
+            return states;
+        }
+
         public class Coordinates
         {
             public String latitude { get; set; }
@@ -75,6 +107,19 @@ namespace US_Geography_
                 string[] coord = str.Split('°');
                 double.TryParse(coord[0], out double val);
                 return val;
+            }
+        }
+
+        public class State
+        {
+            public int[] population { get; set; }
+            public double[] growth { get; set; }
+            public string name { get; set; }
+
+            public State(int elements)
+            {
+                population = new int[elements];
+                growth = new double[elements];
             }
         }
 
@@ -108,6 +153,7 @@ namespace US_Geography_
                 return Math.Round(initpop * Math.Pow(growthrate, factor), 0);
             }
         }
+
         static void Main(string[] args)
         {
             string fp = Directory.GetCurrentDirectory() + "/us_msa.csv";
@@ -130,6 +176,21 @@ namespace US_Geography_
                 double projected = Metro.future_pop(metrolist[i].mgrowth, metrolist[i].mpop_new, 6);
                 Console.WriteLine("{0}: {1}\n 2019 Population: {2}, 2025 Population: {3}", i, metrolist[i].metroname, metrolist[i].mpop_new, projected);
             }
+            
+            string filepath = Directory.GetCurrentDirectory() + "/pop_change.csv";
+            var tmp = csv_reader(filepath);
+            for (int j = 0; j < 51; j++)
+            {
+                //Console.WriteLine(tmp[j].name);
+            }
+
+            var neg = tmp.FindAll(e => Array.Exists(e.growth, element => element < 0)).ToList();
+            int count = 1;
+            foreach (State s in neg) {
+                Console.WriteLine("{0}: {1}", count, s.name);
+                count += 1;
+            }
+
             
         }
     }
