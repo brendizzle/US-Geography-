@@ -4,25 +4,25 @@ namespace US_Geography_
 {   
     public class Metro 
     {
-        public string metroname { get; set; }
-        public int mpop_new { get; set; }
-        public int mpop_old { get; set; }
-        public double mgrowth { get; set; }
+        public string name { get; set; }
+        public int population { get; set; }
+        public int population_old { get; set; }
+        public double growth { get; set; }
 
-        public Metro(string _metroname, int _mpop_new, int _mpop_old, double _mgrowth)
+        public Metro(string _name, int _population, int _population_old, double _growth)
         {
-            metroname = _metroname;
-            mpop_new = _mpop_new;
-            mpop_old = _mpop_old;
-            mgrowth = _mgrowth;
+            name = _name;
+            population = _population;
+            population_old = _population_old;
+            growth = _growth;
         }
 
         public Metro()
         {
-            metroname = "";
-            mpop_new = 0;
-            mpop_old = 0;
-            mgrowth = 0;
+            name = "";
+            population = 0;
+            population_old = 0;
+            growth = 0;
         }
 
         public static double future_pop(double growth, double initpop, int num_years)

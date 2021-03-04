@@ -8,12 +8,15 @@ namespace US_Geography_
 {
     class Program
     {
-        class City 
+        class City : Metro
         {
-            public String name { get; set; }
+            //public String name { get; set; }
             public String state { get; set; }
             public Coordinates coord { get; set; }
-            public int population;
+            public double area { get; set; }
+            public double density { get; set; }
+
+            /*public int population;
             public int Population 
             { 
                 get {return population; }
@@ -25,22 +28,19 @@ namespace US_Geography_
             }
             public int oldpopulation { get; set; }
             public double growth { get; set; }
-            public double area { get; set; }
-            public double density { get; set; }
 
-            public Metro metro { get; set; }
+            public Metro metro { get; set; }*/
 
-            public City(string _name, string _state, Coordinates _coord, int _pop, int _oldPop, double _growth, double _area, Metro _metro)
+            public City(string _name, string _state, Coordinates _coord, int _pop, int _oldPop, double _area)
             {
-                name = _name;
+                this.name = _name;
                 state = _state;
                 coord = _coord;
-                population = _pop;
-                oldpopulation = _oldPop;
-                growth = _growth;
+                this.population = _pop;
+                this.population_old = _oldPop;
+                this.growth = ((_pop - _oldPop) / _oldPop) * 100;
                 area = _area;
                 density = dens(area, population);
-                metro = _metro;
             }
 
             public double dens(double area, int population)
@@ -50,12 +50,12 @@ namespace US_Geography_
 
             public void Info()
             {
-                Console.WriteLine("City: {0}, State: {1}", name, state);
+                Console.WriteLine("City: {0}, State: {1}", this.name, state);
                 Console.WriteLine("Latitude: {0}, Longitude: {1}", coord.latitude, coord.longitude);
-                Console.WriteLine("2019 Population: {0}", population);
+                Console.WriteLine("2019 Population: {0}", this.population);
+                Console.WriteLine("Growth Rate: {0}", (this.population - this.population_old)/(0.01*this.population_old));
                 Console.WriteLine("Area: {0} sq. mi.", area);
                 Console.WriteLine("Population Density: {0} per sq. mi.", density);
-                Console.WriteLine("Metro Area: {0}, Metro population (2019): {1}", metro.metroname, metro.mpop_new);
             }
         }
 
@@ -109,8 +109,8 @@ namespace US_Geography_
 
             for (int i = 0; i < 35; i++)
             {
-                double projected = Metro.future_pop(metrolist[i].mgrowth, metrolist[i].mpop_new, 6);
-                Console.WriteLine("{0}: {1}\n 2019 Population: {2}, 2025 Population: {3}", i, metrolist[i].metroname, metrolist[i].mpop_new, projected);
+                double projected = Metro.future_pop(metrolist[i].growth, metrolist[i].population, 6);
+                Console.WriteLine("{0}: {1}\n 2019 Population: {2}, 2025 Population: {3}", i, metrolist[i].name, metrolist[i].population, projected);
             }
             
             string filepath = Directory.GetCurrentDirectory() + "/pop_change.csv";
@@ -126,6 +126,9 @@ namespace US_Geography_
                 Console.WriteLine("{0}: {1}", count, s.name);
                 count += 1;
             }
+
+            City Columbus = new City("Columbus", "Ohio", new Coordinates("39.9852°N", "82.9848°W"), 898553, 787033, 219.22);
+            Columbus.Info();
 
             
         }
